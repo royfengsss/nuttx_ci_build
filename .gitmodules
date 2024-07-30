@@ -1,0 +1,8 @@
+[submodule "nuttx"]
+	path = nuttx
+	url = https://github.com/SonySemiconductorSolutions/aitrios-sdk-device-nuttx.git
+	branch = type5-dev
+[submodule "apps"]
+	path = apps
+	url = https://github.com/SonySemiconductorSolutions/aitrios-sdk-device-nuttx-apps.git
+	branch = type5-dev
