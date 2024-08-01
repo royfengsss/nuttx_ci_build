@@ -46,8 +46,7 @@ jobs:
       - name: Build nuttx
         run: |
           cd nuttx
-          ./tools/configure.sh -E esp32s3-scam:sdc_test
-          make
+          ./tools/configure.sh -E esp32s3-scam:wamr_test; make
           ls -l nuttx.*
 
       - name: Upload a Build Artifact
