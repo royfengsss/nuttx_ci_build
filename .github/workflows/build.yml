@@ -13,7 +13,9 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-
+    strategy:
+      matrix:
+        build_target: [sdc_test, wamr_test]
     steps:
       - name: Checkout nuttx code
         uses: actions/checkout@v4
@@ -48,14 +50,14 @@ jobs:
       - name: Build nuttx
         run: |
           cd nuttx
-          ./tools/configure.sh -E esp32s3-scam:wamr_test; make
+          ./tools/configure.sh -E esp32s3-scam:${{ matrix.build_target }}; make
           ls -l nuttx.*
 
       - name: Upload a Build Artifact
         uses: actions/upload-artifact@v4.3.3
         with:
         # Artifact name
-          name: build_output
+          name: build_output_${{ matrix.build_target }}
         # A file, directory or wildcard pattern that describes what to upload
           path: |
             nuttx/nuttx
