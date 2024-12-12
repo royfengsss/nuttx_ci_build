@@ -20,20 +20,11 @@ jobs:
       - name: Checkout nuttx code
         uses: actions/checkout@v4
         with:
-          repository: SonySemiconductorSolutions/aitrios-sdk-device-nuttx
+          repository: royfengsss/nuttx_ci_build
           token: ${{ secrets.MY_GITHUB_TOKEN }}
-          ref: type5-dev
+          ref: main
           path: nuttx
-          fetch-depth: 1
-
-      - name: Checkout nuttx-apps code
-        uses: actions/checkout@v4
-        with:
-          repository: SonySemiconductorSolutions/aitrios-sdk-device-nuttx-apps
-          token: ${{ secrets.MY_GITHUB_TOKEN }}
-          ref: type5-dev
-          path: apps
-          fetch-depth: 1
+          submodules: 'true'
 
       - name: Set up build environment
         run: |
