@@ -5,8 +5,6 @@ if [ $# != 1 ]; then
     exit 1
 fi
 target=$1
-git -C nuttx pull
-git -C apps pull
 cd nuttx
 tools/configure.sh -E ${target}
 make
