@@ -23,7 +23,7 @@ jobs:
           repository: royfengsss/nuttx_ci_build
           token: ${{ secrets.MY_GITHUB_TOKEN }}
           ref: main
-          path: nuttx
+          path: ci_build
           submodules: 'true'
 
       - name: Set up build environment
@@ -40,7 +40,7 @@ jobs:
           pip install esptool>4.7.0
       - name: Build nuttx
         run: |
-          cd nuttx
+          cd ci_build/nuttx
           ./tools/configure.sh -E esp32s3-scam:${{ matrix.build_target }}; make
           ls -l nuttx.*
 
@@ -51,7 +51,7 @@ jobs:
           name: build_output_${{ matrix.build_target }}
         # A file, directory or wildcard pattern that describes what to upload
           path: |
-            nuttx/nuttx
-            nuttx/nuttx.bin
-            nuttx/nuttx.map
-            nuttx/System.map
+            ci_build/nuttx/nuttx
+            ci_build/nuttx/nuttx.bin
+            ci_build/nuttx/nuttx.map
+            ci_build/nuttx/System.map
